@@ -1,7 +1,7 @@
-import { Typography } from "antd"
+import { Tooltip, Typography } from "antd"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { inputState, count, remove, add } from "../redux/addNumberSlice"
+import { inputState, count, remove, add } from "../../redux/addNumberSlice"
 
 const { Title } = Typography
 
@@ -29,9 +29,12 @@ const Input = () => {
     const numbers = useSelector(inputState)
     return (
     <>
+        <Tooltip placement="bottom" title={<span>You can use keyboard instead of buttons on the screen</span>}>
+
         <Title onClick={() => {input.focus()}}>
             {numbers}
         </Title>
+        </Tooltip>
         <HiddenInput numbers={numbers} />
     </>
     )

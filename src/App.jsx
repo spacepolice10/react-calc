@@ -1,8 +1,8 @@
 import { Typography } from "antd"
-import Numbers from "./components/Numbers"
-import Input from "./components/Input"
-import Expressions from "./components/Expressions";
-import Settings from "./components/Settings";
+import Settings from "./components/Settings"
+import { Routes, Route } from "react-router"
+import Calculator from "./Calculator"
+import Converter from "./Converter"
 
 const { Title } = Typography;
 const style = {display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}
@@ -11,11 +11,10 @@ const App = () => {
   return (
     <div style={style}>
       <Settings />
-      <Input />
-      <div style={{display: 'flex'}}>
-        <Numbers />
-        <Expressions />
-      </div>
+      <Routes>
+        <Route path='calculator' element={<Calculator />} />
+        <Route path='converter' element={<Converter />} />
+      </Routes>
     </div>
   )
 }
