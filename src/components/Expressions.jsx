@@ -1,6 +1,6 @@
 import { Row, Col, Button } from "antd"
 import { useDispatch } from 'react-redux'
-import { add } from '../redux/addNumberSlice'
+import { add, count } from '../redux/addNumberSlice'
 const style={margin: '5px'}
 
 const Expressions = () => {
