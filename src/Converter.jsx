@@ -1,24 +1,38 @@
 import { ClockCircleOutlined, CopyrightOutlined, DollarOutlined, ExpandAltOutlined } from "@ant-design/icons"
-import { Button, Tooltip } from "antd"
+import { Radio, Tooltip } from "antd"
+import { useState } from "react"
+import DistanceConverter from "./components/converter/DistanceConverter"
+import MoneyConverter from "./components/converter/MoneyConverter"
 
-const style = {margin: '5px', width: '65px', height: '65px'}
+const style = {margin: '5px'}
 
 const Converter = () => {
+    const [metrics, setMetrics] = useState()
+    let screen = <MoneyConverter />
+    switch (metrics) {
+        case 'money': screen = <MoneyConverter />; break
+        case 'distances': screen = <DistanceConverter />; break
+        // case 'degrees': screen = <DistanceConverter />; break
+        // case 'time': screen = <DistanceConverter />; break
+    }
     return (
         <>
-            <div>
-                <Tooltip placement="bottom" title="Convert currencies">
-                    <Button style={style} shape="circle" type="primary" icon={<DollarOutlined style={{fontSize: '30px'}} />}></Button>
-                </Tooltip>
-                <Tooltip placement="bottom" title="Convert distances">
-                    <Button style={style} shape="circle" type="primary" icon={<ExpandAltOutlined style={{fontSize: '30px'}} />}></Button>
-                </Tooltip>
-                <Tooltip placement="bottom" title="Convert degrees">
-                    <Button style={style} shape="circle" type="primary" icon={<CopyrightOutlined style={{fontSize: '30px'}} />}></Button>
-                </Tooltip>
-                <Tooltip placement="bottom" title="Convert time">
-                    <Button style={style} shape="circle" type="primary" icon={<ClockCircleOutlined style={{fontSize: '30px'}} />}></Button>
-                </Tooltip>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}}>
+                <Radio.Group onChange={(e) => {setMetrics(e.target.value)}} defaultValue="a">
+                    <Tooltip placement="bottom" title="Convert money">
+                        <Radio.Button style={style} value="money"><DollarOutlined /></Radio.Button>
+                    </Tooltip>
+                    <Tooltip placement="bottom" title="Convert distances">
+                        <Radio.Button style={style} value="distances"><ExpandAltOutlined /></Radio.Button>
+                    </Tooltip>
+                    <Tooltip placement="bottom" title="Convert degrees">
+                        <Radio.Button style={style} value="degrees"><CopyrightOutlined /></Radio.Button>
+                    </Tooltip>
+                    <Tooltip placement="bottom" title="Convert time">
+                        <Radio.Button style={style} value="time"><ClockCircleOutlined /></Radio.Button>
+                    </Tooltip>
+                </Radio.Group>
+                {screen}
             </div>
         </>
     )

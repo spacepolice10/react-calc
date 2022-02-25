@@ -30,10 +30,9 @@ const Input = () => {
     return (
     <>
         <Tooltip placement="bottom" title={<span>You can use keyboard instead of buttons on the screen</span>}>
-
-        <Title onClick={() => {input.focus()}}>
-            {numbers}
-        </Title>
+            <Title onClick={() => {input.focus()}}>
+                {numbers}
+            </Title>
         </Tooltip>
         <HiddenInput numbers={numbers} />
     </>
