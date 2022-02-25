@@ -1,3 +1,24 @@
 .ant-menu, .ant-menu-sub, .ant-menu-vertical {
   border-radius: 10px !important;
 }
+
+.ant-select {
+  border-radius: 10px !important;
+}
+
+#caret {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

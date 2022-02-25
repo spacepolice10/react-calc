@@ -1,4 +1,4 @@
-import { Tooltip, Typography } from "antd"
+import { Divider, Tooltip, Typography } from "antd"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { inputState, count, remove, add } from "../../redux/addNumberSlice"
@@ -30,9 +30,12 @@ const Input = () => {
     return (
     <>
         <Tooltip placement="bottom" title={<span>You can use keyboard instead of buttons on the screen</span>}>
+            <div style={{display: 'flex', alignItems: 'center'}}>
             <Title onClick={() => {input.focus()}}>
                 {numbers}
             </Title>
+            <Divider id="caret" style={{backgroundColor: '#0086FF', height: '42px', width: '2px', marginBottom: '14px'}} type="vertical" />
+            </div>
         </Tooltip>
         <HiddenInput numbers={numbers} />
     </>
