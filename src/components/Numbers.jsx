@@ -1,13 +1,15 @@
 import { Row, Col, Button, Space } from 'antd'
-
+import { useDispatch } from 'react-redux'
+import { add } from '../redux/addNumberSlice'
 const style={margin: '5px'}
 
 const Numbers = () => {
+    const dispatch = useDispatch()
     return (
     <div>
         <Row justify='center'>
             <Col span={8}>
-                <Button style={style} shape='circle'>7</Button>
+                <Button onClick={() => {dispatch(add('8'))}} style={style} shape='circle'>7</Button>
             </Col>
             <Col span={8}>
                 <Button style={style} shape='circle'>8</Button>
@@ -39,8 +41,11 @@ const Numbers = () => {
             </Col>
         </Row>
         <Row>
-            <Col span={12}>
+            <Col span={8}>
                 <Button style={style} shape='circle'>0</Button>
+            </Col>
+            <Col span={8}>
+                <Button style={style} shape='circle'>.</Button>
             </Col>
         </Row>
     </div>
