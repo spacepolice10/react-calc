@@ -10,6 +10,10 @@
   animation: pulse 1s infinite;
 }
 
+#conversion {
+  animation: appear 0.2s;
+}
+
 @keyframes pulse {
   0% {
     opacity: 100%;
@@ -20,5 +24,19 @@
   }
   100% {
     opacity: 100%;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0%;
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0px);
   }
 }
