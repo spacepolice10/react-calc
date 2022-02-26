@@ -62,8 +62,8 @@ const DistanceConverter = () => {
             setKilometers(value / 39370)
             setInches(value)
             setFeet(value / 12)
-            setYards(value * 36)
-            setMiles(value * 63360)
+            setYards(value / 36)
+            setMiles(value / 63360)
         }
         if (metric == 'ft') {
             setCentimeters(value * 30.48)
@@ -106,54 +106,54 @@ const DistanceConverter = () => {
                 style={style} 
                 suffix="cm" 
                 placeholder="0" 
-                value={centimeters} 
+                value={Math.round(centimeters * 100) / 100} 
             />
             <Input 
                 onChange={(event) => {setValue(event.target.value); setMetric('dm'); convert()}} 
                 style={style} suffix="dm" 
                 placeholder="0" 
-                value={decimeters} 
+                value={Math.round(decimeters * 100) / 100} 
             />
             <Input 
                 onChange={(event) => {setValue(event.target.value); setMetric('m'); convert()}} 
                 style={style} suffix="m" 
                 placeholder="0" 
-                value={meters} 
+                value={Math.round(meters * 100) / 100} 
             />
             <Input 
                 onChange={(event) => {setValue(event.target.value); setMetric('km'); convert()}} 
                 style={style} 
                 suffix="km" 
                 placeholder="0" 
-                value={kilometers} 
+                value={Math.round(kilometers * 100) / 100} 
             />
             <Input 
                 onChange={(event) => {setValue(event.target.value); setMetric('in'); convert()}} 
                 style={style} 
                 suffix="in" 
                 placeholder="0" 
-                value={inches} 
+                value={Math.round(inches * 100) / 100} 
             />
             <Input 
                 onChange={(event) => {setValue(event.target.value); setMetric('ft'); convert()}} 
                 style={style} 
                 suffix="ft" 
                 placeholder="0" 
-                value={feet} 
+                value={Math.round(feet * 100) / 100} 
                 />
             <Input 
                 onChange={(event) => {setValue(event.target.value); setMetric('yd'); convert()}} 
                 style={style} 
                 suffix="yd" 
                 placeholder="0"
-                value={yards} 
+                value={Math.round(yards * 100) / 100} 
                 />
             <Input 
                 onChange={(event) => {setValue(event.target.value); setMetric('mi'); convert()}} 
                 style={style} 
                 suffix="mi" 
                 placeholder="0" 
-                value={miles}
+                value={Math.round(miles * 100) / 100}
                 />
         </>
     )
