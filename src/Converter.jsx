@@ -3,6 +3,7 @@ import { Radio, Tooltip } from "antd"
 import { useState } from "react"
 import DistanceConverter from "./components/converter/DistanceConverter"
 import MoneyConverter from "./components/converter/MoneyConverter"
+import Error from "./components/Error"
 
 const style = {margin: '5px'}
 
@@ -12,8 +13,8 @@ const Converter = () => {
     switch (metrics) {
         case 'money': screen = <MoneyConverter />; break
         case 'distances': screen = <DistanceConverter />; break
-        // case 'degrees': screen = <DistanceConverter />; break
-        // case 'time': screen = <DistanceConverter />; break
+        case 'degrees': screen = <Error />; break
+        case 'time': screen = <Error />; break
     }
     return (
         <>
