@@ -1,5 +1,5 @@
-import { Space, Select, InputNumber, Typography } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { Space, Select, InputNumber, Typography, Button } from 'antd'
+import React, { useEffect, useState, useRef } from 'react'
 
 const { Title } = Typography 
 const { Option } = Select
@@ -7,6 +7,7 @@ const { Option } = Select
 const style={color: '#0086FF', border: '2px #0086FF solid', padding: '5px', margin: '5px', borderRadius: '10px'}
 
 const MoneyConverter = () => {
+    const inputEl = useRef(null)
     const [value, setValue] = useState(5)
     const [currency, setCurrency] = useState({data: {
         RUB: 81,
@@ -53,7 +54,8 @@ const MoneyConverter = () => {
     return (
         <>
             <Space direction="vertical">
-                <InputNumber onPressEnter={(e) => {setValue(e.target.value); getData()}} addonBefore={selectBefore} addonAfter={selectAfter} defaultValue={100} />
+                <InputNumber ref={inputEl} onPressEnter={(e) => {setValue(e.target.value); getData()}} addonBefore={selectBefore} addonAfter={selectAfter} defaultValue={100} />
+                <Button onClick={() => {setValue(inputEl.current.value); getData()}}>Convert</Button>
             </Space>,
             <div style={{display: 'flex', flexDirection: 'column', gap: '10px', width: '300px'}}>
                 <Title level={2}>History:</Title>
