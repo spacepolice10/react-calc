@@ -1,51 +1,53 @@
 import { Space, Select, InputNumber, Typography, Button } from 'antd'
 import React, { useEffect, useState, useRef } from 'react'
 
-const { Title } = Typography 
+const { Title } = Typography
 const { Option } = Select
 
-const style={color: '#0086FF', border: '2px #0086FF solid', padding: '5px', margin: '5px', borderRadius: '10px'}
+const style = { color: '#0086FF', border: '2px #0086FF solid', padding: '5px', margin: '5px', borderRadius: '10px' }
 
 const MoneyConverter = () => {
     const inputEl = useRef(null)
     const [value, setValue] = useState(5)
-    const [currency, setCurrency] = useState({data: {
-        RUB: 81,
-        USD: 1,
-    }})
+    const [currency, setCurrency] = useState({
+        data: {
+            RUB: 81,
+            USD: 1,
+        }
+    })
     const [firstCurrency, setFirstCurrency] = useState("USD")
     const [secondCurrency, setSecondCurrency] = useState("RUB")
     const [currencyHistory, setCurrencyHistory] = useState([])
     const [result, setResult] = useState([])
     const getData = () => {
-        fetch('https://freecurrencyapi.net/api/v2/latest?apikey=4f202bc0-9668-11ec-8d55-25c099a12d74').then(x => x.json().then(i => { i.data.USD = 1; setCurrency(i)}))
+        fetch('https://freecurrencyapi.net/api/v2/latest?apikey=4f202bc0-9668-11ec-8d55-25c099a12d74').then(x => x.json().then(i => { i.data.USD = 1; setCurrency(i) }))
     }
     const convert = () => {
-        if (result.length > 5) { 
+        if (result.length > 5) {
             if (confirm('Too many calculations. Wanna delete old ones?')) {
-                setResult(result.splice(0, (result.length))); 
-                setCurrencyHistory(currencyHistory.splice(currencyHistory.length -1, (currencyHistory.length))) 
+                setResult(result.splice(0, (result.length)));
+                setCurrencyHistory(currencyHistory.splice(currencyHistory.length - 1, (currencyHistory.length)))
             }
         }
-        setCurrencyHistory(currencyHistory.concat([{first: firstCurrency, second: secondCurrency}]))
+        setCurrencyHistory(currencyHistory.concat([{ first: firstCurrency, second: secondCurrency }]))
         setResult(result.concat([(value * currency.data[firstCurrency]) * currency.data[secondCurrency]]))
     }
     const selectBefore = (
-        <Select onChange={(e) => {setFirstCurrency(e)}} defaultValue="USD" style={{ width: 60 }}>
-          <Option value="USD">$</Option>
-          <Option value="EUR">€</Option>
-          <Option value="GBP">£</Option>
-          <Option value="CNY">¥</Option>
-          <Option value="RUB">₽</Option>
+        <Select onChange={(e) => { setFirstCurrency(e) }} defaultValue="USD" style={{ width: 60 }}>
+            <Option value="USD">$</Option>
+            <Option value="EUR">€</Option>
+            <Option value="GBP">£</Option>
+            <Option value="CNY">¥</Option>
+            <Option value="RUB">₽</Option>
         </Select>
     );
     const selectAfter = (
-        <Select onChange={(e) => {setSecondCurrency(e)}} defaultValue="RUB" style={{ width: 60 }}>
-          <Option value="USD">$</Option>
-          <Option value="EUR">€</Option>
-          <Option value="GBP">£</Option>
-          <Option value="CNY">¥</Option>
-          <Option value="RUB">₽</Option>
+        <Select onChange={(e) => { setSecondCurrency(e) }} defaultValue="RUB" style={{ width: 60 }}>
+            <Option value="USD">$</Option>
+            <Option value="EUR">€</Option>
+            <Option value="GBP">£</Option>
+            <Option value="CNY">¥</Option>
+            <Option value="RUB">₽</Option>
         </Select>
     );
     useEffect(() => {
@@ -54,20 +56,20 @@ const MoneyConverter = () => {
     return (
         <>
             <Space direction="vertical">
-                <InputNumber ref={inputEl} onPressEnter={(e) => {setValue(e.target.value); getData()}} addonBefore={selectBefore} addonAfter={selectAfter} defaultValue={100} />
-                <Button onClick={() => {setValue(inputEl.current.value); getData()}}>Convert</Button>
+                <InputNumber ref={inputEl} onPressEnter={(e) => { setValue(e.target.value); getData() }} addonBefore={selectBefore} addonAfter={selectAfter} defaultValue={100} />
+                <Button onClick={() => { setValue(inputEl.current.value); getData() }}>Convert</Button>
             </Space>,
-            <div style={{display: 'flex', flexDirection: 'column', gap: '10px', width: '300px'}}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px' }}>
                 <Title level={2}>History:</Title>
                 {React.Children.toArray(result.map((e, i) => {
-                    return ( 
+                    return (
                         <p id="conversion">
                             <span style={style}>{currencyHistory[i].first}</span>
-                            &gt; 
+                            &gt;
                             <span style={style}>{currencyHistory[i].second}</span>
-                            = 
+                            =
                             <span style={style}>{e.toFixed(2)}</span>
-                        </p> 
+                        </p>
                     )
                 }))}
             </div>

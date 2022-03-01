@@ -7,7 +7,7 @@ import AppPicker from "./AppPicker"
 import Error from "./components/Error"
 
 const { Title } = Typography
-const style = {display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}
+const style = { display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }
 
 const App = () => {
   return (

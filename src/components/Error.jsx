@@ -4,7 +4,7 @@ const { Title } = Typography
 
 const Error = () => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <Title>
                 This one is under construction
             </Title>

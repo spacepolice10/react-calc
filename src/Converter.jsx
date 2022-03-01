@@ -5,7 +5,7 @@ import DistanceConverter from "./components/converter/DistanceConverter"
 import MoneyConverter from "./components/converter/MoneyConverter"
 import Error from "./components/Error"
 
-const style = {margin: '5px'}
+const style = { margin: '5px' }
 
 const Converter = () => {
     const [metrics, setMetrics] = useState()
@@ -18,8 +18,8 @@ const Converter = () => {
     }
     return (
         <>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}}>
-                <Radio.Group onChange={(e) => {setMetrics(e.target.value)}} defaultValue="a">
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                <Radio.Group onChange={(e) => { setMetrics(e.target.value) }} defaultValue="a">
                     <Tooltip placement="bottom" title="Convert money">
                         <Radio.Button style={style} value="money"><DollarOutlined /></Radio.Button>
                     </Tooltip>

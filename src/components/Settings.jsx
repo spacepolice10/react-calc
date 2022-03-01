@@ -6,8 +6,8 @@ const { SubMenu } = Menu
 
 const Settings = () => {
     return (
-        <Menu style={{borderRadius: '10px'}}>
-            <SubMenu key="sub1" icon={<SettingOutlined />} title="Settings" style={{borderRadius: '10px'}}>
+        <Menu style={{ borderRadius: '10px' }}>
+            <SubMenu key="sub1" icon={<SettingOutlined />} title="Settings" style={{ borderRadius: '10px' }}>
                 <Menu.Item key="1" icon={<CalculatorOutlined />}>
                     <Link to='/calculator'>
                         Switch to calculator
