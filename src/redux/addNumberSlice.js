@@ -4,6 +4,7 @@ export const addNumberSlice = createSlice({
   name: 'addNumber',
   initialState: {
     value: '0',
+    result: ''
   },
   reducers: {
     add: (state, action) => {
@@ -16,7 +17,8 @@ export const addNumberSlice = createSlice({
     },
     count: (state) => {
       try {
-        alert(eval(state.value))
+        state.result = eval(state.value)
+        state.value = '0'
       } catch (e) {
         alert('Incorrect expression. Please, consider changing it')
       }
@@ -26,6 +28,7 @@ export const addNumberSlice = createSlice({
     }
   },
 })
+export const resultState = (state) => state.addNumber.result
 export const inputState = (state) => state.addNumber.value
 export const { add, remove, count, clear } = addNumberSlice.actions
 export default addNumberSlice.reducer

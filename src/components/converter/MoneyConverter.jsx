@@ -63,7 +63,7 @@ const MoneyConverter = () => {
                 <Title level={2}>History:</Title>
                 {React.Children.toArray(result.map((e, i) => {
                     return (
-                        <p id="conversion">
+                        <p class="appear">
                             <span style={style}>{currencyHistory[i].first}</span>
                             &gt;
                             <span style={style}>{currencyHistory[i].second}</span>

@@ -8,10 +8,10 @@ const Calculator = () => {
         <>
             <Input />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Utilities />
+                <Utilities />
                 <div style={{ display: 'flex' }}>
                     <Numbers />
-                <Expressions />
+                    <Expressions />
                 </div>
             </div>
         </>

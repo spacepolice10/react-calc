@@ -10,7 +10,7 @@
   animation: pulse 1s infinite;
 }
 
-#conversion {
+.appear {
   animation: appear 0.2s;
 }
 
