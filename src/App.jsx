@@ -1,13 +1,11 @@
-import { Typography } from "antd"
-import Settings from "./components/Settings"
 import { Routes, Route } from "react-router"
+import Settings from "./components/Settings"
 import Calculator from "./Calculator"
 import Converter from "./Converter"
 import AppPicker from "./AppPicker"
 import Error from "./components/Error"
 import MemoryZone from "./components/MemoryZone"
 
-const { Title } = Typography
 const style = { display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }
 
 const App = () => {

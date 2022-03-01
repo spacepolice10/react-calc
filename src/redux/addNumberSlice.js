@@ -8,11 +8,14 @@ export const addNumberSlice = createSlice({
   },
   reducers: {
     add: (state, action) => {
+      if (/[A-z]/g.test(action.payload)) return
       if (state.value == '0') { state.value = action.payload; return; }
       state.value += action.payload
     },
     remove: (state, action) => {
-      if (action.payload == 'Backspace' && state.value.length == 1) { state.value = '0'; return }
+      if (action.payload == 'Backspace' && state.value.length == 1) { 
+        state.value = '0'; return 
+      }
       state.value = state.value.slice(0, state.value.length - 1)
     },
     count: (state) => {
@@ -25,6 +28,7 @@ export const addNumberSlice = createSlice({
     },
     clear: (state) => {
       state.value = '0'
+      state.result = ''
     }
   },
 })
