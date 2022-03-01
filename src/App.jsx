@@ -5,6 +5,7 @@ import Calculator from "./Calculator"
 import Converter from "./Converter"
 import AppPicker from "./AppPicker"
 import Error from "./components/Error"
+import MemoryZone from "./components/MemoryZone"
 
 const { Title } = Typography
 const style = { display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <div style={style}>
       <Settings />
+      <MemoryZone />
       <Routes>
         <Route path='/' element={<AppPicker />} />
         <Route path='calculator' element={<Calculator />} />
