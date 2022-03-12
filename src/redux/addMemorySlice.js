@@ -12,7 +12,7 @@ export const addMemorySlice = createSlice({
       if (state.dropped) {
         if (state.array.length >= 5) {
           state.array.shift()
-        } 
+        }
         state.array.push(state.dragged.data)
         state.dropped = false
       } else {
@@ -29,7 +29,6 @@ export const addMemorySlice = createSlice({
       state.dropped = false
     },
     pop: (state) => {
-      console.log(state.dragged.data)
       const index = state.array.indexOf(state.dragged.data)
       state.array.splice(index, 1)
     }

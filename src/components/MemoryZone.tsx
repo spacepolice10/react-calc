@@ -4,23 +4,29 @@ import { memoryState, draggedState, fixDrag, fixDrop, looseDrop, pop, drop, drop
 import { add, count, resultState } from "../redux/addNumberSlice";
 
 const styleOuter = { display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10, backgroundColor: '#F5F5F5', width: '100%', maxWidth: 280, height: 45, borderRadius: 20, padding: 5, overflow: 'scroll' }
-const styleDrop = { position: 'absolute', color: 'white', fontSize: 25, marginTop: 20 }
+const styleDrop = { position: 'absolute' as 'absolute', color: 'white', fontSize: 25, marginTop: 20 }
 const styleInner = { fontWeight: 'bold', borderRadius: 10, padding: 10, backgroundColor: '#E6E6E6', margin: 5, height: 35, display: 'flex', alignItems: 'center' }
+
+interface DraggedInterface {
+    id: string,
+    data: string
+}
 
 const MemoryZone = () => {
     const [isEntered, setIsEntered] = useState(false)
     const dispatch = useDispatch()
     const result = useSelector(resultState)
-    const memory = useSelector(memoryState)
-    const dragged = useSelector(draggedState)
-    const dropped = useSelector(droppedState)
+    const memory = useSelector(memoryState) as String[]
+    const dragged = useSelector(draggedState) as DraggedInterface
+    const dropped = useSelector(droppedState) as string
     return (
         <div
-            onDragEnter={(e) => { 
-                if (dragged.id != 'test') {
-                    setIsEntered(true); 
+            onDragEnter={(e) => {
+                if (dragged.id != 'drop') {
+                    setIsEntered(true);
                 }
-                dispatch(fixDrop(e.target.innerHTML)) 
+                const target = e.target as HTMLElement
+                dispatch(fixDrop(target.innerHTML))
             }}
             onDragLeave={() => { setIsEntered(false) }}
             onDrop={() => dispatch(looseDrop())}
@@ -33,14 +39,15 @@ const MemoryZone = () => {
                 {
                     !isEntered &&
                     React.Children.toArray(memory.map(e => (
-                        <p 
-                        id='test'
-                        draggable={true}
-                        onDragStart={(e) => {
-                            dispatch(fixDrag({id: e.target.id, data: e.target.innerHTML}))
-                        }} 
-                        onDragEnd={() => {dispatch(add(result + (dropped + dragged.data))); dispatch(count()); dispatch(pop())}}
-                        className='appear' style={styleInner}
+                        <p
+                            id='drop'
+                            draggable={true}
+                            onDragStart={(e) => {
+                                const target = e.target as HTMLElement
+                                dispatch(fixDrag({ id: target.id, data: target.innerHTML }))
+                            }}
+                            onDragEnd={() => { dispatch(add(result + (dropped + dragged.data))); dispatch(count()); dispatch(pop()) }}
+                            className='appear' style={styleInner}
                         >
                             {e}
                         </p>
