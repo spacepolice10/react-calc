@@ -12,6 +12,7 @@ const style = {
 }
 
 const Expressions = () => {
+    // These states indicating the drop status of every expression button. They affect visuals of the buttons
     const [plusIsEntered, setPlusIsEntered] = useState(false)
     const [minusIsEntered, setMinusIsEntered] = useState(false)
     const [divideIsEntered, setDivideIsEntered] = useState(false)
@@ -39,10 +40,7 @@ const Expressions = () => {
                         shape="circle"
                         size="large"
                     >
-                        <span
-                            onDrop={() => console.log('hey')}
-                            className={plusIsEntered ? 'entered' : 'left'}
-                        >
+                        <span className={plusIsEntered ? 'entered' : 'left'}>
                             +
                         </span>
                     </Button>
@@ -66,10 +64,7 @@ const Expressions = () => {
                         shape="circle"
                         size="large"
                     >
-                        <span
-                            onDrop={() => console.log('hey')}
-                            className={minusIsEntered ? 'entered' : 'left'}
-                        >
+                        <span className={minusIsEntered ? 'entered' : 'left'}>
                             -
                         </span>
                     </Button>
@@ -93,10 +88,7 @@ const Expressions = () => {
                         shape="circle"
                         size="large"
                     >
-                        <span
-                            onDrop={() => console.log('hey')}
-                            className={divideIsEntered ? 'entered' : 'left'}
-                        >
+                        <span className={divideIsEntered ? 'entered' : 'left'}>
                             /
                         </span>
                     </Button>
@@ -121,7 +113,6 @@ const Expressions = () => {
                         size="large"
                     >
                         <span
-                            onDrop={() => console.log('hey')}
                             className={multiplyIsEntered ? 'entered' : 'left'}
                         >
                             *
